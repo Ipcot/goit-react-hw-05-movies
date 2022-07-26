@@ -10,6 +10,5 @@ export const useFetchMovie = () => {
     fetchMovieById(movieId).then(setMovieInfo);
   }, [movieId]);
 
-  console.log(movieInfo);
   return movieInfo;
 };

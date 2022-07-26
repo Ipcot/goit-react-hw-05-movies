@@ -37,3 +37,17 @@ export const fetchMovieById = async id => {
     console.error(error);
   }
 };
+
+export const getCast = async id => {
+  const response = await axios
+    .get(`movie/${id}/credits?api_key=${API_KEY}`)
+    .then(response => response.data);
+  return response;
+};
+
+export const getReviews = async id => {
+  const response = await axios
+    .get(`movie/${id}/reviews?api_key=${API_KEY}`)
+    .then(response => response.data);
+  return response;
+};

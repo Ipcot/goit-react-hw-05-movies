@@ -1,11 +1,12 @@
 import { Box } from 'components/Box/Box';
 import { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { getMovies } from 'services/getMovies';
 import { NavItem } from './Home.styled';
 
 export const Home = () => {
   const [moviesInTrend, setMoviesInTrend] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     getMovies().then(setMoviesInTrend);
@@ -19,7 +20,7 @@ export const Home = () => {
         <Box as="ul" p={5}>
           {moviesInTrend.map(item => (
             <li key={item.id}>
-              <NavItem to={`/movies/${item.id}`}>
+              <NavItem to={`/movies/${item.id}`} state={{ from: location }}>
                 {item.title ?? item.name}
               </NavItem>
             </li>
