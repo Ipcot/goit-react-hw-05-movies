@@ -4,7 +4,7 @@ import { getReviews } from 'services/getMovies';
 
 export const useReviews = () => {
   const [reviews, setReviews] = useState([]);
-  const movieId = useParams();
+  const { movieId } = useParams();
 
   useEffect(() => {
     getReviews(movieId).then(setReviews);
