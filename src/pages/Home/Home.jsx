@@ -10,7 +10,6 @@ export const Home = () => {
 
   useEffect(() => {
     getMovies().then(setMoviesInTrend);
-    // console.log(moviesInTrend);
   }, []);
 
   return (
@@ -18,10 +17,10 @@ export const Home = () => {
       <Box as="h3">
         Trending Today
         <Box as="ul" p={5}>
-          {moviesInTrend.map(item => (
-            <li key={item.id}>
-              <NavItem to={`/movies/${item.id}`} state={{ from: location }}>
-                {item.title ?? item.name}
+          {moviesInTrend.map(({ id, title }) => (
+            <li key={id}>
+              <NavItem to={`/movies/${id}`} state={{ from: location.pathname }}>
+                {title}
               </NavItem>
             </li>
           ))}

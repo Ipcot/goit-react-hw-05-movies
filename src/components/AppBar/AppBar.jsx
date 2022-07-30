@@ -1,5 +1,4 @@
 import { Box } from 'components/Box/Box';
-// import { Link } from 'react-router-dom';
 import { NavItem } from './AppBar.styled';
 
 const navItems = [

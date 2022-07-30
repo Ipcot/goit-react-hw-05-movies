@@ -4,22 +4,11 @@ axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 
 const API_KEY = '8d0bfb748265e58296653e8d81ebf420';
 
-// const searchParams = new URLSearchParams({
-//   api_key: API_KEY,
-//     q: query,
-//     image_type: 'photo',
-//     orientation: 'horizontal',
-//     safesearch: true,
-//     page: page,
-//     per_page: 12,
-// });
-
 export const getMovies = async () => {
   try {
     const response = await axios
-      .get(`trending/all/day?api_key=${API_KEY}`)
+      .get(`trending/movie/day?api_key=${API_KEY}`)
       .then(response => response.data.results);
-    // response is array
     return response;
   } catch (error) {
     console.error(error);
@@ -49,5 +38,15 @@ export const getReviews = async id => {
   const response = await axios
     .get(`movie/${id}/reviews?api_key=${API_KEY}`)
     .then(response => response.data);
+  return response;
+};
+
+export const searchMovie = async query => {
+  const response = await axios
+    .get(
+      `search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
+    )
+    .then(response => response.data.results);
+
   return response;
 };
